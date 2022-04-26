@@ -11,10 +11,12 @@ function NotesList(props) {
         x={note.x}
         y={note.y}
         z={note.z}
+        noteColor={note.noteColor}
         deleteNote={props.deleteNote}
         editText={props.editText}
         handleDrag={props.handleDrag}
         editTitle={props.editTitle}
+        changeNoteColor={props.changeNoteColor}
       />
     );
   });

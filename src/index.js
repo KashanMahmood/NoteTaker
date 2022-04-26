@@ -38,6 +38,7 @@ class App extends Component {
       x: 0,
       y: 0,
       zIndex: 0,
+      noteColor: 'pink',
     };
 
     db.pushNote(newNote);
@@ -59,6 +60,10 @@ class App extends Component {
     db.updateState(id, { x: position.x, y: position.y });
   };
 
+  changeNoteColor = (id, color) => {
+    db.updateState(id, { noteColor: color });
+  };
+
   render() {
     return (
       <div className="appContainer">
@@ -67,6 +72,7 @@ class App extends Component {
           editTitle={this.editTitle}
           deleteNote={this.deleteNote}
           editText={this.editText}
+          changeNoteColor={this.changeNoteColor}
           notes={this.state.notes != null ? this.state.notes : {}}
         />
       </div>

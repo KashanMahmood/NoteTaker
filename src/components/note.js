@@ -10,6 +10,10 @@ function Note(props) {
   const [text, setText] = useState(props.text);
   const [titleEditing, setTitleEditing] = useState(false);
   const [title, setTitle] = useState(props.title);
+  const [greenNote, setGreenNote] = useState(false);
+  const [blueNote, setBlueNote] = useState(false);
+  const [pinkNote, setPinkNote] = useState(true);
+
   const handleDeleteClick = () => {
     props.deleteNote(props.id);
   };
@@ -26,7 +30,6 @@ function Note(props) {
   };
 
   const handleSave = (e) => {
-    console.log('here', textEditing, titleEditing);
     if (textEditing) {
       props.editText(props.id, text);
       setTextEditing(false);
@@ -51,7 +54,7 @@ function Note(props) {
         <TextareaAutosize
           onChange={handleTextEdit}
           value={text}
-          className="textTextBox"
+          className={`textTextBox ${props.noteColor}`}
           cacheMeasurements
         />
       );
@@ -68,7 +71,8 @@ function Note(props) {
         <TextareaAutosize
           onChange={handleTitleEdit}
           value={title}
-          className="titleTextBox"
+          className={`titleTextBox ${props.noteColor}`}
+          maxRows={2}
           cacheMeasurements
 
         />
@@ -80,17 +84,25 @@ function Note(props) {
     }
   };
 
-  const colorSelection = () => {
-    console.log('Shalom hehe');
-    if (document.getElementById('green').checked) {
-      console.log('wati whatehfaisodfj');
-      console.log(document.getElementsByClassName('body').className);
-      document.getElementsByClassName('body').classList.add('green');
-      document.getElementsByClassName('body').removeClass('blue');
-      document.getElementsByClassName('body').classList.add('pink');
-      console.log(document.getElementsByClassName('body').classList);
+  const greenClicked = () => {
+    props.changeNoteColor(props.id, 'green');
+  };
+  const blueClicked = () => {
+    props.changeNoteColor(props.id, 'blue');
+  };
+
+  const pinkClicked = () => {
+    props.changeNoteColor(props.id, 'pink');
+  };
+
+  const noteID = () => {
+    if (greenNote) {
+      return ('green');
+    } else if (blueNote) {
+      return ('blue');
+    } else {
+      return ('pink');
     }
-    return (<div>hi</div>);
   };
 
   return (
@@ -103,9 +115,9 @@ function Note(props) {
       }}
       onDrag={handleDrag}
     >
-      <div className="noteContainer">
+      <div className={`noteContainer ${props.noteColor}`}>
 
-        <div className="header">
+        <div className={`header ${props.noteColor}`}>
 
           <div className="title">
             <element onClick={handleTitleClick}> {renderTitleSection()} </element>
@@ -129,15 +141,16 @@ function Note(props) {
           </element>
         </div>
 
-        <div className="footer">
+        <div className={`footer ${props.noteColor}`}>
 
           <div className="colors">
-            <input type="radio" onClick={colorSelection} name={props.id} id="green" value="green" className="colorInput" />
-            <input type="radio" name={props.id} id="blue" value="blue" className="colorInput" />
-            <input type="radio" name={props.id} id="pink" value="pink" className="colorInput" />
+            <input type="button" id="green" onClick={greenClicked} />
+            <input type="button" id="pink" onClick={pinkClicked} />
+            <input type="button" id="blue" onClick={blueClicked} />
+
           </div>
-          {colorSelection}
-          <i role="button" id="deleteBttn" tabIndex={0} aria-label="delete" onClick={handleDeleteClick} className="fa-solid fa-trash fa" />
+
+          <i role="button" id="deleteBttn" tabIndex={0} aria-label="delete" onClick={handleDeleteClick} className="fa-solid fa-trash" />
         </div>
 
       </div>
