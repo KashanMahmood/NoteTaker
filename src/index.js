@@ -1,90 +1,74 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.scss';
 import produce, { enableAllPlugins } from 'immer';
+
 import NotesList from './components/notesList';
 import AddNote from './components/addNote';
+import * as db from './services/datastore';
+import 'firebase/compat/database';
 
 enableAllPlugins();
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.keyCounter = 5;
+
     this.state = {
       notes: {
-        1: {
-          title: 'Hello there. this is the first note',
-          text: 'Ayo, whats up',
-          x: 0,
-          y: 0,
-          zIndex: 0,
-        },
-        2: {
-          title: 'Hello there. this is the second note',
-          text: 'Ayo, whats up',
-          x: 4,
-          y: 5,
-        },
-
       },
 
     };
   }
 
-  createNote = (content) => {
+  componentDidMount() {
+    db.fetchNotes((notes) => {
+      this.setState({ notes });
+    });
+  }
+
+  createNote = (title) => {
     const newNote = {
-      title: content,
-      text: 'Hehehe',
+      title,
+      text: '',
       x: 0,
       y: 0,
       zIndex: 0,
     };
 
-    this.setState(
-      produce((draft) => {
-        draft.notes[this.keyCounter] = newNote;
-      }),
-    );
-
-    this.keyCounter += 1;
+    db.pushNote(newNote);
   };
 
   deleteNote = (id) => {
-    console.log(this.state[id]);
-    this.setState(
-      produce((draft) => {
-        delete draft.notes[id];
-      }),
-    );
-    console.log(this.state[id]);
-    console.log(id);
-    console.log('Bruhhhh delete');
-    console.log(this.state);
+    db.deleteNote(id);
   };
 
-  // eslint-disable-next-line class-methods-use-this
-  editNote = (info) => {
-    console.log('inEdit Bitch');
+  editText = (id, info) => {
+    db.updateState(id, { text: info });
   };
 
-  // eslint-disable-next-line class-methods-use-this
+  editTitle = (id, info) => {
+    db.updateState(id, { title: info });
+  };
+
   handleDrag = (id, position) => {
-    const updatedFields = { x: position.x, y: position.y };
-    this.setState(
-      produce((draft) => {
-        draft.notes[id] = { ...draft.notes[id], ...updatedFields };
-      }),
-    );
+    db.updateState(id, { x: position.x, y: position.y });
   };
 
   render() {
     return (
       <div className="appContainer">
         <AddNote handleCreateNote={this.createNote} />
-        <NotesList handleDrag={this.handleDrag} deleteNote={this.deleteNote} editNote={this.editNote} notes={this.state.notes} />
+        <NotesList handleDrag={this.handleDrag}
+          editTitle={this.editTitle}
+          deleteNote={this.deleteNote}
+          editText={this.editText}
+          notes={this.state.notes != null ? this.state.notes : {}}
+        />
       </div>
     );
   }
