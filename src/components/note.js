@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unused-class-component-methods */
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -10,9 +8,6 @@ function Note(props) {
   const [text, setText] = useState(props.text);
   const [titleEditing, setTitleEditing] = useState(false);
   const [title, setTitle] = useState(props.title);
-  const [greenNote, setGreenNote] = useState(false);
-  const [blueNote, setBlueNote] = useState(false);
-  const [pinkNote, setPinkNote] = useState(true);
 
   const handleDeleteClick = () => {
     props.deleteNote(props.id);

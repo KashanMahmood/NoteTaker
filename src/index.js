@@ -1,25 +1,21 @@
 /* eslint-disable class-methods-use-this */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
-/* eslint-disable react/no-unused-state */
+
 import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.scss';
-import produce, { enableAllPlugins } from 'immer';
+import produce from 'immer';
 
 import NotesList from './components/notesList';
 import AddNote from './components/addNote';
 import * as db from './services/datastore';
 import 'firebase/compat/database';
 
-// enableAllPlugins();
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       show: 'all',
-      showID: '',
       notes: {
       },
 
