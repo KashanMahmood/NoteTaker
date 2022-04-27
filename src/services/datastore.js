@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// import { data } from 'autoprefixer';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 
@@ -18,7 +19,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// for updating?
+// for updating
 export function updateState(id, updatedNote) {
   database.ref('notes').child(id).update(updatedNote);
 }
@@ -33,7 +34,6 @@ export function pushNote(newNote) {
   database.ref('notes').push(newNote);
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export function fetchNotes(callback) {
   database.ref('notes').on('value', (snapshot) => {
     const newNoteState = snapshot.val();

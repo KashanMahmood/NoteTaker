@@ -1,11 +1,9 @@
 body, html {
-    font-family: "Roboto", sans-serif;
+  font-family: 'PT Serif', serif;
     background: linear-gradient(to bottom, #043b74 10%,#04264f 40%,#04243c 100%);
     height:100%;
-    // height: auto;
 }
 #addTitle{
-  // background-color: yellow;
   display: flex;
   width: 100%;
   height: 15vh;
@@ -28,6 +26,8 @@ body, html {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  background: linear-gradient(to bottom, #cad3dd 10%,#c9e0f8 40%,#b9dbff 100%);
+  
 }
 
 .createBttn:hover{
@@ -38,11 +38,11 @@ body, html {
 .noteContainer{
 
   border-style: solid;
-  width: 200px;
-  height:250px;
+  min-width: 200px;
+  min-height:250px;
 
-  max-width: 200px;
-  max-height: 250px;
+  max-width: 300px;
+  max-height: 350px;
 
   border-radius: 10px;
   border: none;
@@ -51,21 +51,24 @@ body, html {
   justify-content: space-between;
   flex-direction: column;
   position: absolute;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.24), 0 15px 50px 0 rgba(0,0,0,0.19);
+  
 }
 
 .noteContainer.green{
   background-color: rgba(49, 207, 154, 0.999);
+  box-shadow: 0 2px 2px 0 rgba(106, 225, 186, 0.999), 0 5px 15px 0 rgba(15, 165, 115, 0.852);
 }
 .noteContainer.pink{
   background-color: #edd0d5;
+ 
+  box-shadow: 0 2px 2px 0 #d89ca6, 0 5px 15px 0 #fbc7cf;
 }
 .noteContainer.blue{
   background-color: #88b9ed;
+  box-shadow: 0 2px 2px 0 #5b9ade, 0 5px 15px 0 #93bbe5;
 }
 
 .header{
-  background-color: #ffc0cb;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -74,13 +77,14 @@ body, html {
   border-top-left-radius: 10px;
 }
 .header.green{
-  background-color: rgba(42, 181, 135, 0.873);
+  background: linear-gradient(to bottom, rgba(72, 229, 177, 0.873) 10%,rgba(22, 184, 130, 0.873) 40%, rgb(1, 168, 112) 100%);
 }
 .header.pink{
+  background: linear-gradient(to bottom, #ffc0cb 20%,#f8a9b7 40%,#ffa3b3 60%);
   background-color: #ffc0cb;
 }
 .header.blue{
-  background-color: #6293c8;
+  background: linear-gradient(to bottom, #98c7fa 10%,#6ea2d9 50%, #6293c8 100%);
 }
 
 .title{
@@ -150,20 +154,29 @@ body, html {
 }
 
 .footer.green{
-  background-color: rgba(42, 181, 135, 0.873);
+  background: linear-gradient(to bottom, rgba(72, 229, 177, 0.873) 10%,rgba(22, 184, 130, 0.873) 50%, rgb(1, 168, 112) 100%);
 }
 .footer.pink{
-  background-color: #ffc0cb;
+  background: linear-gradient(to bottom, #ffc0cb 15%,#f8a9b7 40%,#ffa3b3 60%);
 }
 .footer.blue{
-  background-color: #6293c8;
+  background: linear-gradient(to bottom, #98c7fa 10%,#6ea2d9 50%, #6293c8 100%);
 }
 
 #deleteBttn{
   cursor: pointer;
   margin: 5px;
   align-self: center;
+}
 
+#deleteBttn:hover{
+  transform: scale(1.05);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#move:hover{
+  transform: scale(1.05);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #blue{
@@ -175,6 +188,10 @@ body, html {
   cursor: pointer;
   border-color: #88b9ed;
 }
+#blue:hover{
+  transform: scale(1.05);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 #green{
   background-color: rgba(42, 181, 135, 0.873);
   margin: 5px;
@@ -183,6 +200,10 @@ body, html {
   border-radius: 10px;
   cursor: pointer;
   border-color: rgba(49, 207, 154, 0.999);
+}
+#green:hover{
+  transform: scale(1.05);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 #pink{
   background-color: #ffc0cb;
@@ -193,8 +214,76 @@ body, html {
   cursor: pointer;
   border-color: #edd0d5;
 }
+#pink:hover{
+  transform: scale(1.05);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 
+#blueFilter{
+  background: linear-gradient(to bottom, #98c7fa 10%,#68a3e1 50%, #5088c5 100%);
+  margin: 5px;
+  width: 40px;
+  height:40px;
+  border-radius: 7.5px;
+  cursor: pointer;
+  border-color: #88b9ed;
+}
+#blueFilter:hover{
+  transform: scale(1.05);
+  box-shadow: 0px 1px 0px 0 #b2ceed, 0px 0px 7px 1px #e2f0fe; 
+}
+#greenFilter{
+  background: linear-gradient(to bottom, rgba(72, 229, 177, 0.873) 10%,rgba(26, 192, 136, 0.873) 50%, rgb(1, 168, 112) 100%);  margin: 5px;
+  width: 40px;
+  height:40px;
+  border-radius: 10px;
+  cursor: pointer;
+  border-color: rgba(49, 207, 154, 0.999);
+}
+#greenFilter:hover{
+  transform: scale(1.05);
+  box-shadow: 0px 1px 0px 0 rgba(179, 240, 220, 0.999), 0px 0px 7px 1px rgba(197, 247, 230, 0.999);
+}
 
-  
-  
+#pinkFilter{
+  background: linear-gradient(to bottom, #fab3bf 15%,#f7adba 40%,#f593a4 60%);
+  margin: 5px;
+  width: 40px;
+  height:40px;
+  border-radius: 10px;
+  cursor: pointer;
+  border-color: #edd0d5;
+}
+#pinkFilter:hover{
+  transform: scale(1.05);
+  box-shadow: 0px 1px 0px 0 #eee2e4, 0px 0px 7px 1px #eeeded;
+}
+
+#allFilter{
+  background: linear-gradient(to bottom, rgb(216, 222, 238) 10%,rgb(196, 200, 211) 50%, rgb(197, 201, 210) 100%);
+  margin: 5px;
+  width: 40px;
+  height:40px;
+  border-radius: 10px;
+  cursor: pointer;
+  border-color: rgb(247, 249, 255);
+}
+
+#allFilter:hover{
+  transform: scale(1.05);
+  box-shadow: 0px 1px 0px 0 rgb(247, 248, 249), 0px 0px 7px 1px rgb(226, 232, 247);
+}
+
+.filterTitle{
+  display: flex;
+  justify-content: center;
+  color: rgb(216, 222, 238);
+  font-weight: bolder;
+  letter-spacing: 5px;
+}
+
+.filters{
+  display: flex;
+  justify-content: center;
+}
