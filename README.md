@@ -9,7 +9,7 @@
     I the web app functions as it is supposed to and the functions I implemented also work
 
 ## What Didn't
-    I tried to put the show state into the firebase and then use it from there to filter the notes (by color) but I had a little trouble doing the second part of it. I got them on firebase but couldn't figure out how to access them the way I wanted to. So i used immur (produce) to keep track of the filtering locally. But in the end, I think I liked it better like this since it allows each person who has the browser open to localy filter notes themselves instead of having to see the filtered notes of someone else. This also would allow more than one person to use the notes app at the same time as well. 
+    I tried to put the show state into the firebase and then use it from there to filter the notes (by color) but I had a lgitittle trouble doing the second part of it. I got them on firebase but couldn't figure out how to access them the way I wanted to. So i used immur (produce) to keep track of the filtering locally. But in the end, I think I liked it better like this since it allows each person who has the browser open to localy filter notes themselves instead of having to see the filtered notes of someone else. This also would allow more than one person to use the notes app at the same time as well. 
 
     Also I know we were told to edit the Eslintrc to add a line so we wont get those errors yelloing at us for param-reassing but that messed up my auto fix so i just used the quicFix to make that problem go away for the whole index.js file. Had to use the same workaround for EsLintrc yellling at me to use "this" for the class methods
 
