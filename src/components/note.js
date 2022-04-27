@@ -95,16 +95,6 @@ function Note(props) {
     props.changeNoteColor(props.id, 'pink');
   };
 
-  const noteID = () => {
-    if (greenNote) {
-      return ('green');
-    } else if (blueNote) {
-      return ('blue');
-    } else {
-      return ('pink');
-    }
-  };
-
   return (
     <Draggable
       handle=".moveIcon"
