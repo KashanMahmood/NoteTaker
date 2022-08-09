@@ -1,6 +1,7 @@
 # Note Taker
 
 [Website url](https://zingy-cobbler-d4269d.netlify.app/)
+    the weblink no longer works. I used firebase and after a while of inactivity, the notes were deleted from the database and it was disconnected from my project. You still able to see the rest of the feature, though.
 
 
 This web app allows you to create notes and stores in in a Firebase backend, allowing you to access it even after clicking out. 
